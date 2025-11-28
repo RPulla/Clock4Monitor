@@ -72,53 +72,29 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
       <svg 
         width="100%" 
         height="100%" 
-        viewBox="0 0 400 120" 
+        viewBox="0 0 800 240" 
         preserveAspectRatio="xMidYMid meet"
         className="overflow-visible w-full h-full"
         aria-label={`Hora atual: ${timeStr.hours} e ${timeStr.minutes}`}
       >
-        <g 
+        <text 
+          x="50%" 
+          y="52%" 
+          dominantBaseline="central" 
+          textAnchor="middle"
           fill={color}
           style={{ 
             textShadow: textShadowStyle,
             fontFamily: fontFamily,
-            fontSize: '130px',
+            fontSize: '180px',
             fontWeight: 'bold'
           }}
+          className="select-none"
         >
-          {/* Hours - Aligned to the End (Right of the left half) */}
-          <text 
-            x="46%" 
-            y="55%" 
-            dominantBaseline="central" 
-            textAnchor="end"
-            className="select-none"
-          >
-            {timeStr.hours}
-          </text>
-
-          {/* Colon - Centered */}
-          <text 
-            x="50%" 
-            y="52%" 
-            dominantBaseline="central" 
-            textAnchor="middle"
-            className="select-none animate-blink"
-          >
-            :
-          </text>
-
-          {/* Minutes - Aligned to the Start (Left of the right half) */}
-          <text 
-            x="54%" 
-            y="55%" 
-            dominantBaseline="central" 
-            textAnchor="start"
-            className="select-none"
-          >
-            {timeStr.minutes}
-          </text>
-        </g>
+          {timeStr.hours}
+          <tspan className="animate-blink" dy="-10" dx="5">:</tspan>
+          <tspan dy="10" dx="5">{timeStr.minutes}</tspan>
+        </text>
       </svg>
     </div>
   );
