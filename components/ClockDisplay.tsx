@@ -37,6 +37,7 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
     };
 
     updateTime();
+    // Atualiza a cada segundo, mas sem piscar
     const timer = setInterval(updateTime, 1000);
 
     return () => clearInterval(timer);
@@ -66,34 +67,66 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
     ? 'none' 
     : `0 0 30px ${color}60`;
 
+  // Common font style
+  const fontStyle = {
+    textShadow: textShadowStyle,
+    fontFamily: fontFamily,
+    fontSize: '300px',
+    fontWeight: 'bold'
+  };
+
   return (
     <div className={`flex items-center justify-center transition-all duration-500 ease-in-out mx-auto ${widthClass}`}>
       <svg 
         width="100%" 
         height="100%" 
-        // ViewBox ajustado para "Zoom In" (850x300) para preencher melhor a área de 90%
+        // ViewBox ajustado (zoom) para preencher a tela
         viewBox="0 0 850 300" 
         preserveAspectRatio="xMidYMid meet"
         className="overflow-visible w-full h-full"
-        aria-label={`Hora atual: ${timeStr.hours} e ${timeStr.minutes}`}
+        aria-label={`Hora atual: ${timeStr.hours}:${timeStr.minutes}`}
       >
+        {/* Renderização em 3 partes independentes para garantir alinhamento absoluto */}
+        
+        {/* 1. HORAS: Alinhadas à direita do centro (49%) */}
+        <text 
+          x="48%" 
+          y="52%" 
+          dominantBaseline="central" 
+          textAnchor="end"
+          fill={color}
+          style={fontStyle}
+          className="select-none"
+        >
+          {timeStr.hours}
+        </text>
+
+        {/* 2. DOIS PONTOS: Centralizados (50%) e levemente elevados (y=49%) para centro visual */}
         <text 
           x="50%" 
-          y="50%" 
+          y="49%" 
           dominantBaseline="central" 
           textAnchor="middle"
           fill={color}
-          style={{ 
-            textShadow: textShadowStyle,
-            fontFamily: fontFamily,
-            fontSize: '300px',
-            fontWeight: 'bold'
-          }}
+          style={fontStyle}
           className="select-none"
         >
-          {/* Renderização linear para garantir alinhamento de baseline perfeito */}
-          {timeStr.hours}<tspan className="animate-blink" dy="-0.125em">:</tspan><tspan dy="0.125em">{timeStr.minutes}</tspan>
+          :
         </text>
+
+        {/* 3. MINUTOS: Alinhados à esquerda do centro (51%) */}
+        <text 
+          x="52%" 
+          y="52%" 
+          dominantBaseline="central" 
+          textAnchor="start"
+          fill={color}
+          style={fontStyle}
+          className="select-none"
+        >
+          {timeStr.minutes}
+        </text>
+
       </svg>
     </div>
   );
