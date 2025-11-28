@@ -92,7 +92,7 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
           className="select-none"
         >
           {/* Renderização linear para garantir alinhamento de baseline perfeito */}
-          {timeStr.hours}<tspan className="animate-blink">:</tspan>{timeStr.minutes}
+          {timeStr.hours}<tspan className="animate-blink" dy="-0.125em">:</tspan><tspan dy="0.125em">{timeStr.minutes}</tspan>
         </text>
       </svg>
     </div>
