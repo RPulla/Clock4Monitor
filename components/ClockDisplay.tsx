@@ -47,7 +47,8 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
   if (!autoWidth) {
     switch (size) {
       case ClockSize.FULLSCREEN:
-        widthClass = 'w-[88vw]';
+        // Updated to 90vw as requested
+        widthClass = 'w-[90vw]';
         break;
       case ClockSize.MEDIUM:
         // Occupy 60% of screen size
@@ -68,32 +69,33 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
     : `0 0 30px ${color}60`;
 
   return (
-    <div className={`flex items-center justify-center transition-all duration-500 ease-in-out ${widthClass}`}>
+    <div className={`flex items-center justify-center transition-all duration-500 ease-in-out mx-auto ${widthClass}`}>
       <svg 
         width="100%" 
         height="100%" 
-        viewBox="0 0 800 240" 
+        viewBox="0 0 1500 400" 
         preserveAspectRatio="xMidYMid meet"
         className="overflow-visible w-full h-full"
         aria-label={`Hora atual: ${timeStr.hours} e ${timeStr.minutes}`}
       >
         <text 
           x="50%" 
-          y="52%" 
+          y="50%" 
           dominantBaseline="central" 
           textAnchor="middle"
           fill={color}
           style={{ 
             textShadow: textShadowStyle,
             fontFamily: fontFamily,
-            fontSize: '180px',
+            fontSize: '300px',
             fontWeight: 'bold'
           }}
           className="select-none"
         >
           {timeStr.hours}
-          <tspan className="animate-blink" dy="-10" dx="5">:</tspan>
-          <tspan dy="10" dx="5">{timeStr.minutes}</tspan>
+          {/* Removed dy/dx to ensure perfect horizontal/vertical alignment on the baseline */}
+          <tspan className="animate-blink px-4">:</tspan>
+          {timeStr.minutes}
         </text>
       </svg>
     </div>
