@@ -75,6 +75,12 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
     fontWeight: 'bold'
   };
 
+  // Colon font style (30% smaller -> 210px)
+  const colonFontStyle = {
+    ...fontStyle,
+    fontSize: '210px'
+  };
+
   return (
     <div className={`flex items-center justify-center transition-all duration-500 ease-in-out mx-auto ${widthClass}`}>
       <svg 
@@ -101,14 +107,14 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
           {timeStr.hours}
         </text>
 
-        {/* 2. DOIS PONTOS: Centro exato */}
+        {/* 2. DOIS PONTOS: Centro exato, com fonte menor */}
         <text 
           x="50%" 
           y="49%" 
           dominantBaseline="central" 
           textAnchor="middle"
           fill={color}
-          style={fontStyle}
+          style={colonFontStyle}
           className="select-none"
         >
           :
