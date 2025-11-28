@@ -32,9 +32,8 @@ export const AVAILABLE_COLORS = [
 export const GMT_OFFSETS = Array.from({ length: 27 }, (_, i) => i - 12); // -12 to +14
 
 export const AVAILABLE_FONTS = [
-  { name: 'Orbitron (Padrão)', value: "'Orbitron', sans-serif" },
+  { name: 'Roboto Mono (Padrão)', value: "'Roboto Mono', monospace" },
   { name: 'Quantico', value: "'Quantico', sans-serif" },
-  { name: 'Roboto Mono', value: "'Roboto Mono', monospace" },
   { name: 'Share Tech Mono', value: "'Share Tech Mono', monospace" },
   { name: 'Wallpoet', value: "'Wallpoet', cursive" },
   { name: 'Black Ops One', value: "'Black Ops One', cursive" },

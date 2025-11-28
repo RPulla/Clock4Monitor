@@ -15,7 +15,7 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
   size, 
   gmtOffset, 
   background, 
-  fontFamily = "'Orbitron', sans-serif",
+  fontFamily = "'Roboto Mono', monospace",
   autoWidth = false 
 }) => {
   const [timeStr, setTimeStr] = useState<{ hours: string; minutes: string }>({ hours: '--', minutes: '--' });
@@ -80,17 +80,17 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
       <svg 
         width="100%" 
         height="100%" 
-        // ViewBox aumentado para 1100 para evitar cortes laterais em fontes largas (Orbitron)
-        viewBox="0 0 1100 300" 
+        // ViewBox reduzido para 900 para dar "zoom" no relógio e ocupar mais espaço
+        viewBox="0 0 900 300" 
         preserveAspectRatio="xMidYMid meet"
         className="overflow-visible w-full h-full"
         aria-label={`Hora atual: ${timeStr.hours}:${timeStr.minutes}`}
       >
         {/* Renderização em 3 partes independentes para garantir alinhamento absoluto */}
         
-        {/* 1. HORAS: Deslocado para esquerda (44%) */}
+        {/* 1. HORAS: Alinhado centralizado geometricamente */}
         <text 
-          x="44%" 
+          x="48%" 
           y="52%" 
           dominantBaseline="central" 
           textAnchor="end"
@@ -101,9 +101,9 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
           {timeStr.hours}
         </text>
 
-        {/* 2. DOIS PONTOS: Deslocado para esquerda (48%) */}
+        {/* 2. DOIS PONTOS: Centro exato */}
         <text 
-          x="48%" 
+          x="50%" 
           y="49%" 
           dominantBaseline="central" 
           textAnchor="middle"
@@ -114,7 +114,7 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
           :
         </text>
 
-        {/* 3. MINUTOS: Deslocado para esquerda (52%) */}
+        {/* 3. MINUTOS: Alinhado centralizado geometricamente */}
         <text 
           x="52%" 
           y="52%" 

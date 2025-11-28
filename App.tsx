@@ -9,7 +9,7 @@ const DEFAULT_CONFIG: ClockConfig = {
   size: ClockSize.MEDIUM,
   gmtOffset: -new Date().getTimezoneOffset() / 60, // Default to local system time
   background: BackgroundTheme.BLACK,
-  fontFamily: AVAILABLE_FONTS[0].value,
+  fontFamily: AVAILABLE_FONTS[0].value, // Will pick Roboto Mono
 };
 
 export default function App() {
