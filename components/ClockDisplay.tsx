@@ -71,8 +71,8 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
       <svg 
         width="100%" 
         height="100%" 
-        // ViewBox reduced from 1500 to 1000 to act as a "Zoom" so text fills 90% of the container
-        viewBox="0 0 1000 350" 
+        // ViewBox ajustado para "Zoom In" (850x300) para preencher melhor a área de 90%
+        viewBox="0 0 850 300" 
         preserveAspectRatio="xMidYMid meet"
         className="overflow-visible w-full h-full"
         aria-label={`Hora atual: ${timeStr.hours} e ${timeStr.minutes}`}
@@ -91,13 +91,8 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
           }}
           className="select-none"
         >
-          {timeStr.hours}
-          {/* 
-            dy="-0.1em" lifts the colon slightly to align with center of numbers 
-            dy="0.1em" on minutes resets the baseline 
-          */}
-          <tspan className="animate-blink" dx="0" dy="-0.08em">:</tspan>
-          <tspan dx="0" dy="0.08em">{timeStr.minutes}</tspan>
+          {/* Renderização linear para garantir alinhamento de baseline perfeito */}
+          {timeStr.hours}<tspan className="animate-blink">:</tspan>{timeStr.minutes}
         </text>
       </svg>
     </div>

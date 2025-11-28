@@ -13,8 +13,8 @@ export default {
       },
       keyframes: {
         blink: {
-          '0%, 49%': { opacity: '1' },
-          '50%, 100%': { opacity: '0' },
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
         },
         gradient: {
           '0%': { backgroundPosition: '0% 50%' },
@@ -23,7 +23,7 @@ export default {
         }
       },
       animation: {
-        blink: 'blink 1s step-end infinite',
+        blink: 'blink 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         gradient: 'gradient 15s ease infinite',
       }
     },
