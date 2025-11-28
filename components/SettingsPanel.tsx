@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { AVAILABLE_COLORS, BackgroundTheme, ClockConfig, ClockSize, GMT_OFFSETS } from '../types';
+import { AVAILABLE_COLORS, BackgroundTheme, ClockConfig, ClockSize, GMT_OFFSETS, AVAILABLE_FONTS } from '../types';
 
 interface SettingsPanelProps {
   config: ClockConfig;
@@ -32,16 +32,16 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({ config, onConfigChange, 
   };
 
   return (
-    <div className="w-full max-w-md p-6 bg-neutral-900/80 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl space-y-6 z-10 text-white">
+    <div className="w-full max-w-md p-6 bg-neutral-900/80 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl space-y-5 z-10 text-white max-h-[90vh] overflow-y-auto custom-scrollbar">
       
       {/* Header */}
-      <div className="border-b border-white/10 pb-4">
+      <div className="border-b border-white/10 pb-3">
         <h2 className="text-xl font-bold mb-1">Configuração</h2>
         <p className="text-sm text-neutral-400">Personalize seu relógio</p>
       </div>
 
       {/* Color Selection */}
-      <div className="space-y-3">
+      <div className="space-y-2">
         <label className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
           Cor dos Caracteres
         </label>
@@ -50,7 +50,7 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({ config, onConfigChange, 
             <button
               key={c.name}
               onClick={() => onConfigChange({ color: c.value })}
-              className={`w-10 h-10 rounded-full border-2 transition-transform hover:scale-110 focus:outline-none ${
+              className={`w-9 h-9 rounded-full border-2 transition-transform hover:scale-110 focus:outline-none ${
                 config.color === c.value ? 'border-white scale-110 shadow-lg' : 'border-transparent'
               }`}
               style={{ backgroundColor: c.value }}
@@ -62,11 +62,11 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({ config, onConfigChange, 
       </div>
 
       {/* Background Selection */}
-      <div className="space-y-3">
+      <div className="space-y-2">
         <label className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
           Fundo do Relógio
         </label>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-2">
           {[BackgroundTheme.BLACK, BackgroundTheme.WHITE, BackgroundTheme.NEBULA].map((theme) => (
              <button
              key={theme}
@@ -83,12 +83,38 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({ config, onConfigChange, 
         </div>
       </div>
 
+       {/* Font Selection */}
+       <div className="space-y-2">
+        <label className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
+          Fonte dos Números
+        </label>
+        <div className="relative">
+          <select
+            value={config.fontFamily}
+            onChange={(e) => onConfigChange({ fontFamily: e.target.value })}
+            className="w-full bg-neutral-800 text-white rounded-lg px-4 py-2 appearance-none border border-neutral-700 focus:border-white focus:outline-none transition-colors cursor-pointer text-sm"
+            style={{ fontFamily: config.fontFamily }}
+          >
+            {AVAILABLE_FONTS.map((font) => (
+              <option key={font.name} value={font.value} style={{ fontFamily: font.value }}>
+                {font.name}
+              </option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
+            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
       {/* Size Selection */}
-      <div className="space-y-3">
+      <div className="space-y-2">
         <label className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
           Tamanho
         </label>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-2">
           {[ClockSize.SMALL, ClockSize.MEDIUM, ClockSize.FULLSCREEN].map((size) => (
             <button
               key={size}
@@ -109,7 +135,7 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({ config, onConfigChange, 
       </div>
 
       {/* Timezone Selection */}
-      <div className="space-y-3">
+      <div className="space-y-2">
         <label className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
           Fuso Horário (GMT)
         </label>
@@ -117,7 +143,7 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({ config, onConfigChange, 
           <select
             value={config.gmtOffset}
             onChange={(e) => onConfigChange({ gmtOffset: Number(e.target.value) })}
-            className="w-full bg-neutral-800 text-white rounded-lg px-4 py-3 appearance-none border border-neutral-700 focus:border-white focus:outline-none transition-colors cursor-pointer"
+            className="w-full bg-neutral-800 text-white rounded-lg px-4 py-2 appearance-none border border-neutral-700 focus:border-white focus:outline-none transition-colors cursor-pointer text-sm"
           >
             {GMT_OFFSETS.map((offset) => {
               const sign = offset >= 0 ? '+' : '';

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ClockDisplay } from './components/ClockDisplay';
 import { SettingsPanel } from './components/SettingsPanel';
-import { BackgroundTheme, ClockConfig, ClockSize } from './types';
+import { BackgroundTheme, ClockConfig, ClockSize, AVAILABLE_FONTS } from './types';
 
 // Default configuration
 const DEFAULT_CONFIG: ClockConfig = {
@@ -9,6 +9,7 @@ const DEFAULT_CONFIG: ClockConfig = {
   size: ClockSize.MEDIUM,
   gmtOffset: -new Date().getTimezoneOffset() / 60, // Default to local system time
   background: BackgroundTheme.BLACK,
+  fontFamily: AVAILABLE_FONTS[0].value,
 };
 
 export default function App() {
@@ -131,6 +132,7 @@ export default function App() {
                   size={ClockSize.SMALL} // Force small size logic or use autoWidth
                   gmtOffset={config.gmtOffset}
                   background={config.background}
+                  fontFamily={config.fontFamily}
                   autoWidth={true} // Use auto width to fit the preview container
                 />
              </div>
@@ -146,6 +148,7 @@ export default function App() {
               size={config.size} 
               gmtOffset={config.gmtOffset}
               background={config.background}
+              fontFamily={config.fontFamily}
             />
          </div>
       )}

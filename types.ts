@@ -15,6 +15,7 @@ export interface ClockConfig {
   size: ClockSize;
   gmtOffset: number; // Hours offset from UTC
   background: BackgroundTheme;
+  fontFamily: string;
 }
 
 export const AVAILABLE_COLORS = [
@@ -29,3 +30,14 @@ export const AVAILABLE_COLORS = [
 ];
 
 export const GMT_OFFSETS = Array.from({ length: 27 }, (_, i) => i - 12); // -12 to +14
+
+export const AVAILABLE_FONTS = [
+  { name: 'Orbitron (Padrão)', value: "'Orbitron', sans-serif" },
+  { name: 'Roboto Mono', value: "'Roboto Mono', monospace" },
+  { name: 'Press Start 2P', value: "'Press Start 2P', cursive" },
+  { name: 'Share Tech Mono', value: "'Share Tech Mono', monospace" },
+  { name: 'Wallpoet', value: "'Wallpoet', cursive" },
+  { name: 'Black Ops One', value: "'Black Ops One', cursive" },
+  { name: 'Audiowide', value: "'Audiowide', cursive" },
+  { name: 'Chakra Petch', value: "'Chakra Petch', sans-serif" },
+];
