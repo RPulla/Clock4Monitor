@@ -33,8 +33,8 @@ export const GMT_OFFSETS = Array.from({ length: 27 }, (_, i) => i - 12); // -12 
 
 export const AVAILABLE_FONTS = [
   { name: 'Orbitron (Padrão)', value: "'Orbitron', sans-serif" },
+  { name: 'Quantico', value: "'Quantico', sans-serif" },
   { name: 'Roboto Mono', value: "'Roboto Mono', monospace" },
-  { name: 'Press Start 2P', value: "'Press Start 2P', cursive" },
   { name: 'Share Tech Mono', value: "'Share Tech Mono', monospace" },
   { name: 'Wallpoet', value: "'Wallpoet', cursive" },
   { name: 'Black Ops One', value: "'Black Ops One', cursive" },

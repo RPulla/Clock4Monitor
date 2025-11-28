@@ -47,11 +47,10 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
   if (!autoWidth) {
     switch (size) {
       case ClockSize.FULLSCREEN:
-        // Updated to 90vw as requested
+        // Occupy 90% of screen width directly
         widthClass = 'w-[90vw]';
         break;
       case ClockSize.MEDIUM:
-        // Occupy 60% of screen size
         widthClass = 'w-[60vw]';
         break;
       case ClockSize.SMALL:
@@ -63,7 +62,6 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
   }
 
   // Determine text shadow based on background
-  // If background is white, no glow. Otherwise, colored glow.
   const textShadowStyle = background === BackgroundTheme.WHITE 
     ? 'none' 
     : `0 0 30px ${color}60`;
@@ -73,7 +71,8 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
       <svg 
         width="100%" 
         height="100%" 
-        viewBox="0 0 1500 400" 
+        // ViewBox reduced from 1500 to 1000 to act as a "Zoom" so text fills 90% of the container
+        viewBox="0 0 1000 350" 
         preserveAspectRatio="xMidYMid meet"
         className="overflow-visible w-full h-full"
         aria-label={`Hora atual: ${timeStr.hours} e ${timeStr.minutes}`}
@@ -93,9 +92,12 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
           className="select-none"
         >
           {timeStr.hours}
-          {/* Removed dy/dx to ensure perfect horizontal/vertical alignment on the baseline */}
-          <tspan className="animate-blink px-4">:</tspan>
-          {timeStr.minutes}
+          {/* 
+            dy="-0.1em" lifts the colon slightly to align with center of numbers 
+            dy="0.1em" on minutes resets the baseline 
+          */}
+          <tspan className="animate-blink" dx="0" dy="-0.08em">:</tspan>
+          <tspan dx="0" dy="0.08em">{timeStr.minutes}</tspan>
         </text>
       </svg>
     </div>
