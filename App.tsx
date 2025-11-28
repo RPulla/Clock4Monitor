@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ClockDisplay } from './components/ClockDisplay';
 import { SettingsPanel } from './components/SettingsPanel';
 import { BackgroundTheme, ClockConfig, ClockSize } from './types';

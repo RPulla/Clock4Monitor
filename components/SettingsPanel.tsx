@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { AVAILABLE_COLORS, BackgroundTheme, ClockConfig, ClockSize, GMT_OFFSETS } from '../types';
 
 interface SettingsPanelProps {
@@ -7,7 +7,7 @@ interface SettingsPanelProps {
   onViewModeRequest: (size: ClockSize) => void;
 }
 
-export const SettingsPanel: React.FC<SettingsPanelProps> = ({ config, onConfigChange, onViewModeRequest }) => {
+export const SettingsPanel: FC<SettingsPanelProps> = ({ config, onConfigChange, onViewModeRequest }) => {
   
   const handleSizeClick = (size: ClockSize) => {
     onConfigChange({ size });
