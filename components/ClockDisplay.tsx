@@ -80,17 +80,17 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
       <svg 
         width="100%" 
         height="100%" 
-        // ViewBox ajustado (zoom) para 800 de largura para maximizar o tamanho dos números
-        viewBox="0 0 800 300" 
+        // ViewBox aumentado para 1100 para evitar cortes laterais em fontes largas (Orbitron)
+        viewBox="0 0 1100 300" 
         preserveAspectRatio="xMidYMid meet"
         className="overflow-visible w-full h-full"
         aria-label={`Hora atual: ${timeStr.hours}:${timeStr.minutes}`}
       >
         {/* Renderização em 3 partes independentes para garantir alinhamento absoluto */}
         
-        {/* 1. HORAS: Deslocado para esquerda (45%) */}
+        {/* 1. HORAS: Deslocado para esquerda (44%) */}
         <text 
-          x="45%" 
+          x="44%" 
           y="52%" 
           dominantBaseline="central" 
           textAnchor="end"
@@ -101,9 +101,9 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
           {timeStr.hours}
         </text>
 
-        {/* 2. DOIS PONTOS: Deslocado para esquerda (47%) */}
+        {/* 2. DOIS PONTOS: Deslocado para esquerda (48%) */}
         <text 
-          x="47%" 
+          x="48%" 
           y="49%" 
           dominantBaseline="central" 
           textAnchor="middle"
@@ -114,9 +114,9 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
           :
         </text>
 
-        {/* 3. MINUTOS: Deslocado para esquerda (49%) */}
+        {/* 3. MINUTOS: Deslocado para esquerda (52%) */}
         <text 
-          x="49%" 
+          x="52%" 
           y="52%" 
           dominantBaseline="central" 
           textAnchor="start"
