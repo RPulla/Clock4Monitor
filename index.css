@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white overflow-hidden;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.font-digital {
+  font-family: 'Orbitron', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
