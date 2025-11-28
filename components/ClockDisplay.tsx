@@ -88,9 +88,9 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
       >
         {/* Renderização em 3 partes independentes para garantir alinhamento absoluto */}
         
-        {/* 1. HORAS: Alinhadas à direita do centro (49%) */}
+        {/* 1. HORAS: Deslocado para esquerda (45%) */}
         <text 
-          x="48%" 
+          x="45%" 
           y="52%" 
           dominantBaseline="central" 
           textAnchor="end"
@@ -101,9 +101,9 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
           {timeStr.hours}
         </text>
 
-        {/* 2. DOIS PONTOS: Centralizados (50%) e levemente elevados (y=49%) para centro visual */}
+        {/* 2. DOIS PONTOS: Deslocado para esquerda (47%) */}
         <text 
-          x="50%" 
+          x="47%" 
           y="49%" 
           dominantBaseline="central" 
           textAnchor="middle"
@@ -114,9 +114,9 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
           :
         </text>
 
-        {/* 3. MINUTOS: Alinhados à esquerda do centro (51%) */}
+        {/* 3. MINUTOS: Deslocado para esquerda (49%) */}
         <text 
-          x="52%" 
+          x="49%" 
           y="52%" 
           dominantBaseline="central" 
           textAnchor="start"
