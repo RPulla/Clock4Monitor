@@ -48,8 +48,8 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
   if (!autoWidth) {
     switch (size) {
       case ClockSize.FULLSCREEN:
-        // Occupy 90% of screen width directly
-        widthClass = 'w-[90vw]';
+        // Occupy 98% of screen width directly (Maximized size)
+        widthClass = 'w-[98vw]';
         break;
       case ClockSize.MEDIUM:
         widthClass = 'w-[60vw]';
@@ -80,8 +80,8 @@ export const ClockDisplay: React.FC<ClockDisplayProps> = ({
       <svg 
         width="100%" 
         height="100%" 
-        // ViewBox ajustado (zoom) para preencher a tela
-        viewBox="0 0 850 300" 
+        // ViewBox ajustado (zoom) para 800 de largura para maximizar o tamanho dos números
+        viewBox="0 0 800 300" 
         preserveAspectRatio="xMidYMid meet"
         className="overflow-visible w-full h-full"
         aria-label={`Hora atual: ${timeStr.hours}:${timeStr.minutes}`}
